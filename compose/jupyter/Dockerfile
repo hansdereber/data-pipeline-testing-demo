@@ -30,6 +30,8 @@ RUN pip install --upgrade pip && \
     rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
     rm -rf /home/$NB_USER/.cache/yarn
 
+RUN pip install great_expectations
+
 RUN jupyter serverextension enable --py jupyterlab_code_formatter
 
-COPY --chown=$NB_UID shortcuts.jupyterlab-settings /home/jovyan/.jupyter/lab/user-settings/\@jupyterlab/shortcuts-extension/shortcuts.jupyterlab-settings
+COPY --chown=$NB_UID compose/jupyter/shortcuts.jupyterlab-settings /home/jovyan/.jupyter/lab/user-settings/\@jupyterlab/shortcuts-extension/shortcuts.jupyterlab-settings
